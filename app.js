@@ -31,11 +31,6 @@ app.use(session({
 app.use(express.Router())
 // middlewares
 
-
-
-
-
-
 app.set('view engine','ejs')
 // routes
 app.use(require('./routes/index'))

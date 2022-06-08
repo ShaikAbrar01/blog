@@ -11,7 +11,7 @@ const BlogSchema = new mongoose.Schema({
     },
     postedAt: {
         type: String,
-        default: new Date().toString()
+        default: new Date().toLocaleDateString('en-us', { weekday:"long", month:"long", day:"numeric", year:"numeric"})
     },
     userId: {
         type: String

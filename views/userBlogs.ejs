@@ -41,25 +41,28 @@
 </nav>
   
   <div class="container mt-5">
-      <h3>Your Blogs💕</h3>
+      <h3><i class="fa-solid fa-cubes-stacked"></i>Your Blogs💕</h3>
         <% if(!is_authenticated) { %> 
             <p>Log In to view your blogs</p>
         <% } %> 
         <% blogs.reverse() %> 
         <% blogs.forEach(blog => { %> 
+          <a href="/blog/<%= blog._id %> " style="text-decoration: none; color:black;">
             <div class="card mt-3">
                 <div class="card-body">
-                    <p class="text-mutes">Published at: <%= blog.postedAt %> </p>
-                  <h5 class="card-title"><%= blog.title %> </h5>
-                  <p class="card-text"><%= blog.content.slice(0,99) %>... <a href="/blog/<%= blog._id  %>">read more</a> </p>
-                  <a href="/blog/<%= blog._id  %> " class="btn btn-primary">Read more...</a>
-                  
-                  <a href="/delete/<%= blog._id  %> " class="btn btn-danger">Delete</a>
-                  <a href="/edit/<%= blog._id  %> " class="btn btn-warning">Edit</a>
+                  <h5 class="card-title"><i class="fa-brands fa-battle-net"></i> <%= blog.title %> </h5>
+                  <p class="card-text"><i class="fa-solid fa-align-left"></i> <%= blog.content.slice(0,99) %>... <a href="/blog/<%= blog._id  %>">read more</a> </p>
+                  <figure>
+                    <figcaption class="blockquote-footer">
+                      <i class="fa-solid fa-calendar"></i> Published on: <cite title="Source Title"><%= blog.postedAt %> </cite>
+                    </figcaption>
+                  </figure>
+                  <a href="/delete/<%= blog._id  %> " class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                  <a href="/edit/<%= blog._id  %> " class="btn btn-warning"><i class="fa-solid fa-file-pen"></i></a>
                   
                 </div>
               </div>
-        
+            </a>
         <% }) %> 
 
       

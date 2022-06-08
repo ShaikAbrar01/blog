@@ -41,11 +41,36 @@
 </nav>
   
 
-<div class="container">
-    <p class="text-muted"><%= blog.postedAt  %> </p>
+<div class="container mt-3">
     <h2 > <%= blog.title  %> </h2>
     <hr>
     <p class="mt-5"><%= blog.content  %> </p>
+    <figure>
+      <figcaption class="blockquote-footer">
+        Published on: <cite title="Source Title"><%= blog.postedAt %> </cite>
+      </figcaption>
+    </figure>
+    <figure class="text-end mt-3">
+      <figcaption class="blockquote-footer">
+        Blog written by: <cite title="Source Title"><%= blog.username  %> </cite>
+      </figcaption>
+    </figure>
+    <hr><hr>
+    <p>All blogs from <%= blog.username %> </p>
+    <% blogs.reverse() %> 
+    <% blogs.forEach(post => {%> 
+    <a href="/blog/<%= post._id %>" style="text-decoration: none; color: black;">
+    <div class="card mt-2">
+      <div class="card-header">
+        <%= post.postedAt %> 
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= post.title %> </h5>
+        <p class="card-text"><%= post.content%> </p>
+    </a>
+      </div>
+    </div>
+    <% }) %> 
 </div>
 
 <%- include('./partials/footer.ejs') %> 

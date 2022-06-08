@@ -51,18 +51,22 @@
         You need to <a href="/login" class="alert-link">Login</a> or <a href="/register" class="alert-link">Signup</a> in order to access the features
       </div>
     <% } %> 
-      <h3>All Blogs💕</h3>
+    <h3><i class="fa-solid fa-cubes-stacked"></i> All Blogs💕</h3>
         <% blogs.reverse() %> 
         <% blogs.forEach(blog => { %> 
+          <a href="/blog/<%= blog._id  %> " style="text-decoration: none; color:black">
             <div class="card mt-3 ">
                 <div class="card-body">
-                    <p class="text-mutes">Published at: <%= blog.postedAt %> </p>
-                  <h5 class="card-title"><%= blog.title %> </h5>
-                  <p class="card-text"><%= blog.content.slice(0,99) %>... <a href="/blog/<%= blog._id  %>">read more</a> </p>
-                  <a href="/blog/<%= blog._id  %> " class="btn btn-primary">Read more...</a>
-                  <figure class="text-end">
+                  <h5 class="card-title"><i class="fa-brands fa-battle-net"></i> <%= blog.title %> </h5>
+                  <p class="card-text"><i class="fa-solid fa-align-left"></i> <%= blog.content.slice(0,99) %>... <a href="/blog/<%= blog._id  %>">read more</a> </p>
+                  <figure class="text-end mt-3">
                     <figcaption class="blockquote-footer">
-                      Blog written by: <cite title="Source Title"><%= blog.username || 'Unknown' %> </cite>
+                      <i class="fa-solid fa-signature"></i>Author: <cite title="Source Title"><%= blog.username || 'Unknown' %> </cite>
+                    </figcaption>
+                  </figure>
+                  <figure>
+                    <figcaption class="blockquote-footer">
+                      <i class="fa-solid fa-calendar"></i> Published on: <cite title="Source Title"><%= blog.postedAt %> </cite>
                     </figcaption>
                   </figure>
                   <% /* %>
@@ -72,6 +76,7 @@
                   
                 </div>
               </div>
+            </a>
         
         <% }) %> 
 

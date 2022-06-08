@@ -6,10 +6,13 @@ router.get('/blog/:id', async (req, res) => {
     if(req.session.userId) {
         is_authenticated = true
     }
+
     const {id} = req.params
     const getBlog = await Blog.findOne({_id: id})
+    const username = getBlog.username
+    const getBlogs = await Blog.find({username})
 
-    res.render('particularBlog', {blog: getBlog, is_authenticated: is_authenticated})
+    res.render('particularBlog', {blog: getBlog, is_authenticated: is_authenticated, blogs: getBlogs})
 })
 
 router.get('/delete/:id', (req, res) => {
