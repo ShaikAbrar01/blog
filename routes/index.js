@@ -12,6 +12,7 @@ router.get('/home', async (req, res) => {
         is_authenticated = true
     }
     const username = req.session.user_name
+    const userId = req.session.userId
     console.log('In home route: '+req.session.user_name)
     console.log('User id: '+ req.session.userId)
     const allBlogs = await Blog.find()
@@ -29,5 +30,6 @@ router.get('/blogs', async (req, res) => {
     // console.log(allUserBlogs)
     res.render('userBlogs', {blogs: allUserBlogs, is_authenticated: is_authenticated})
 })
+
 
 module.exports = router

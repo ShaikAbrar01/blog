@@ -36,6 +36,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
             <li><a class="dropdown-item" href="/logout">Logout</a></li>
+
           </ul>
         </li>
         <% } %> 
@@ -45,13 +46,14 @@
   </div>
 </nav>
   
-  <div class="container mt-5 mb-5">
+  <div class="container mt-3 mb-5">
     <% if(!is_authenticated) { %> 
       <div class="alert alert-warning" role="alert">
         You need to <a href="/login" class="alert-link">Login</a> or <a href="/register" class="alert-link">Signup</a> in order to access the features
       </div>
     <% } %> 
-    <h3><i class="fa-solid fa-cubes-stacked"></i> All Blogs💕</h3>
+    <h1 class="text-center text-success font-monospace"><i class="fa-solid fa-brain"></i> Give the writer inside you a push</h1>
+    <h3><i class="fa-solid fa-cubes-stacked"></i> All Blogs</h3>
         <% blogs.reverse() %> 
         <% blogs.forEach(blog => { %> 
           <a href="/blog/<%= blog._id  %> " style="text-decoration: none; color:black">
