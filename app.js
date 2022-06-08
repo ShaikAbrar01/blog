@@ -24,7 +24,7 @@ app.use(session({
     secret: 'secret',
     resave: false,
     saveUninitialized: true,
-    store: connectMongo.create({ mongoUrl: 'mongodb://localhost/blog_tut' })
+    store: connectMongo.create({ mongoUrl: 'mongodb+srv://shaikabrar:shaikabrar@cluster0.ujfwf.mongodb.net/?retryWrites=true&w=majority' })
   }));
 
 
