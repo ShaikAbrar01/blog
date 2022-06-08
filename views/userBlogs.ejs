@@ -1,0 +1,68 @@
+<%- include('./partials/header.ejs') %> 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/home">Blogger</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/home">Home</a>
+        </li>
+        
+        
+        
+        <% if(!is_authenticated) { %> 
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/register">Sign up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/login">Log In</a>
+        </li>
+        <% } %> 
+        <% if(is_authenticated) { %> 
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/blogs">Your Blogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/compose">Create blog</a>
+          </li>
+          <% } %> 
+        <% if(is_authenticated) { %> 
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
+        </li>
+        <% } %> 
+        
+       
+    </div>
+  </div>
+</nav>
+  
+  <div class="container mt-5">
+      <h3>Your Blogs💕</h3>
+        <% if(!is_authenticated) { %> 
+            <p>Log In to view your blogs</p>
+        <% } %> 
+        <% blogs.reverse() %> 
+        <% blogs.forEach(blog => { %> 
+            <div class="card mt-3">
+                <div class="card-body">
+                    <p class="text-mutes">Published at: <%= blog.postedAt %> </p>
+                  <h5 class="card-title"><%= blog.title %> </h5>
+                  <p class="card-text"><%= blog.content.slice(0,99) %>... <a href="/blog/<%= blog._id  %>">read more</a> </p>
+                  <a href="/blog/<%= blog._id  %> " class="btn btn-primary">Read more...</a>
+                  
+                  <a href="/delete/<%= blog._id  %> " class="btn btn-danger">Delete</a>
+                  <a href="/edit/<%= blog._id  %> " class="btn btn-warning">Edit</a>
+                  
+                </div>
+              </div>
+        
+        <% }) %> 
+
+      
+  </div>
+
+<%- include('./partials/footer.ejs') %> 

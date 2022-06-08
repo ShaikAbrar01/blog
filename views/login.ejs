@@ -1,0 +1,35 @@
+<%- include('./partials/header.ejs') %> 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/home">Blogger</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/home">Home</a>
+          </li>
+          
+      </div>
+    </div>
+  </nav>
+
+<div class="container mt-5">
+    <% if(incorrect) { %> 
+    <div class="alert alert-warning" role="alert">
+        Wrong credentials!! Try again..
+      </div>
+    <% } %> 
+    <form action="/login" method="POST">
+        <h3>Log In</h3>
+        <input type="text" name="username" class="form-control mt-4" placeholder="Enter username" required>
+        <!-- <input type="email" name="email" class="form-control mt-2" placeholder="Enter email" required> -->
+        <input type="text" name="password" class="form-control mt-2" placeholder="Enter password" required>
+        <input type="submit" class="btn btn-md btn-success mt-3" value="Log In">
+    </form>
+
+    <p>Don't have an account? <a href="/register">Click here to sign up</a> </p>
+</div>
+
+<%- include('./partials/footer.ejs') %> 
