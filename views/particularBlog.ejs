@@ -59,17 +59,26 @@
     <p>All blogs from <%= blog.username %> </p>
     <% blogs.reverse() %> 
     <% blogs.forEach(post => {%> 
-    <a href="/blog/<%= post._id %>" style="text-decoration: none; color: black;">
-    <div class="card mt-2">
-      <div class="card-header">
-        <%= post.postedAt %> 
-      </div>
-      <div class="card-body">
-        <h5 class="card-title"><%= post.title %> </h5>
-        <p class="card-text"><%= post.content%> </p>
-    </a>
-      </div>
-    </div>
+    
+    <a href="/blog/<%= post._id  %> " style="text-decoration: none; color:black">
+      <div class="card mt-3 ">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fa-brands fa-battle-net"></i> <%= post.title %> </h5>
+            <p class="card-text"><i class="fa-solid fa-align-left"></i> <%= post.content.slice(0,99) %>... <a href="/blog/<%= blog._id  %>">read more</a> </p>
+            <figure class="text-end mt-3">
+              <figcaption class="blockquote-footer">
+                <i class="fa-solid fa-signature"></i>Author: <cite title="Source Title"><%= post.username%> </cite>
+              </figcaption>
+            </figure>
+            <figure>
+              <figcaption class="blockquote-footer">
+                <i class="fa-solid fa-calendar"></i> Published on: <cite title="Source Title"><%= post.postedAt %> </cite>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </a>
+  
     <% }) %> 
 </div>
 
