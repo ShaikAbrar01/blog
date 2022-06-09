@@ -53,7 +53,7 @@ router.post('/login', (req, res) => {
                     req.session.userId = user._id
                     console.log('Username: ' + req.session.user_name)
                     console.log('User id: '+ req.session.userId)
-                    res.redirect('/home')
+                    res.redirect('/')
                 } else {
                     req.session.incorrect = true
                     res.redirect('/login')

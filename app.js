@@ -37,6 +37,7 @@ app.use(require('./routes/index'))
 app.use(require('./routes/compose'))
 app.use(require('./routes/blog'))
 app.use(require('./routes/auth'))
+app.use(require('./routes/comment'))
 
 // server configurations are here...
 const port = process.env.PORT || 3000

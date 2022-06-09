@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router()
 const Blog = require('../models/Blog')
+const Comment = require('../models/Comment')
 router.get('/blog/:id', async (req, res) => {
     var is_authenticated = false
     if(req.session.userId) {
@@ -11,8 +12,10 @@ router.get('/blog/:id', async (req, res) => {
     const getBlog = await Blog.findOne({_id: id})
     const username = getBlog.username
     const getBlogs = await Blog.find({username})
+    const getComments = await Comment.find({blogId: id})
+    console.log('comments: ' + getComments)
 
-    res.render('particularBlog', {blog: getBlog, is_authenticated: is_authenticated, blogs: getBlogs})
+    res.render('particularBlog', {blog: getBlog, is_authenticated: is_authenticated, blogs: getBlogs, comments: getComments})
 })
 
 router.get('/delete/:id', (req, res) => {
@@ -49,5 +52,18 @@ router.post('/edit/:id', (req, res) => {
         console.log(err)
     })
 })
+
+// router.post('/comment/:id', (req,res) => {
+//     const id = req.params
+//     const {comment} = req.body
+//     Blog.updateOne({_id:id}, {$push:{comments: comment}})
+//     .then(() => {
+//         console.log('Added a comment')
+//         res.redirect(`/blog/${id}`)
+//     })
+//     .catch((err) => {
+//         console.log(err)
+//     })
+// })
 
 module.exports = router

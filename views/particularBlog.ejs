@@ -56,7 +56,24 @@
       </figcaption>
     </figure>
     <hr><hr>
-    <p>All blogs from <%= blog.username %> </p>
+    <h4 class="text-black-50"><i class="fa-solid fa-comment"></i> <%= comments.length %> Comments</h4>
+    <% if(comments.length === 0) { %> 
+      <p>No comments yet...</p>
+    <% } %> 
+    <% comments.forEach((comment) => { %>
+      <hr>
+        <h5 class="card-title text-secondary"><i class="fa-solid fa-user"></i> <%= comment.username %> </h5>
+        <p class="card-text"> <%= comment.comment %> </p>
+        
+    <% }) %>  
+    <% if(is_authenticated) { %> 
+      <form action="/comment/<%= blog._id %>" method="post">
+        <textarea name="comment" cols="30" rows="3" class="mt-3 form-control" placeholder="Comment here"></textarea>
+        <button type="submit" class="btn btn-success mt-3"><i class="fa-solid fa-plus"></i> Comment</button>
+      </form>
+      <% } %>
+    <hr>
+    <p><i class="fa-solid fa-newspaper"></i> All blogs from <b><%= blog.username %></b> </p>
     <% blogs.reverse() %> 
     <% blogs.forEach(post => {%> 
     
