@@ -45,25 +45,33 @@
             <p>Log In to view your blogs</p>
         <% } %> 
         <% blogs.reverse() %> 
-        <% blogs.forEach(blog => { %> 
-          <a href="/blog/<%= blog._id %> " style="text-decoration: none; color:black;">
-            <div class="card mt-3">
-                <div class="card-body">
-                  <h5 class="card-title"><i class="fa-brands fa-battle-net"></i> <%= blog.title %> </h5>
-                  <p class="card-text"><i class="fa-solid fa-align-left"></i> <%= blog.content.slice(0,99) %>... <a href="/blog/<%= blog._id  %>">read more</a> </p>
-                  <figure>
-                    <figcaption class="blockquote-footer">
-                      <i class="fa-solid fa-calendar"></i> Published on: <cite title="Source Title"><%= blog.postedAt %> </cite>
-                    </figcaption>
-                  </figure>
-                  <a href="/edit/<%= blog._id  %> " class="btn btn-warning"><i class="fa-solid fa-file-pen"></i> Edit</a>
+        
+      <div class="row row-cols-1 row-cols-md-3 g-3">
+      <% blogs.forEach(blog => { %>
+              
+      <div class="col">
+          <div class="card">
+            <a href="/blog/<%= blog._id  %> " style="text-decoration: none; color:black">
+            <% if(blog.image) { %> 
+              <img src="<%= blog.image %> " class="card-img-top">
+            <% } %>
+              <div class="card-body">
+                <p class="card-text"><i class="fa-solid fa-align-left"></i> <%= blog.content.slice(0,99) %>... <a href="/blog/<%= blog._id  %>">read more</a> </p>
+                      <figure>
+                        <figcaption class="blockquote-footer">
+                          <i class="fa-solid fa-calendar"></i> Published on: <cite title="Source Title"><%= blog.postedAt %> </cite>
+                        </figcaption>
+                      </figure>
+                      <a href="/edit/<%= blog._id  %> " class="btn btn-warning"><i class="fa-solid fa-file-pen"></i> Edit</a>
                   <a href="/delete/<%= blog._id  %> " class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</a>
-                </div>
+    
               </div>
-            </a>
-        <% }) %> 
-
-      
+            </div>
+          </div>
+        </a>
+            <% }); %> 
+          
+          </div>
   </div>
 
 <%- include('./partials/footer.ejs') %> 

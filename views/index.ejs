@@ -45,6 +45,7 @@
     </div>
   </div>
 </nav>
+
   
   <div class="container mt-3 mb-5">
     <% if(!is_authenticated) { %> 
@@ -54,13 +55,19 @@
     <% } %> 
     <h1 class="text-center text-success font-monospace"><i class="fa-solid fa-brain"></i> Give the writer inside you a push</h1>
     <h3 class="text-center"><i class="fa-solid fa-cubes-stacked"></i> All Blogs</h3>
-        <% blogs.reverse() %> 
-        <% blogs.forEach(blog => { %> 
-          <a href="/blog/<%= blog._id  %> " style="text-decoration: none; color:black">
-            <div class="card mt-3 ">
-                <div class="card-body">
-                  <h5 class="card-title"><i class="fa-brands fa-battle-net"></i> <%= blog.title %> </h5>
-                  <p class="card-text"><i class="fa-solid fa-align-left"></i> <%= blog.content.slice(0,99) %>... <a href="/blog/<%= blog._id  %>">read more</a> </p>
+    <% blogs.reverse() %> 
+    
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+      <% blogs.forEach(blog => { %>
+          
+  <div class="col">
+      <div class="card">
+        <a href="/blog/<%= blog._id  %> " style="text-decoration: none; color:black">
+        <% if(blog.image) { %> 
+          <img src="<%= blog.image %> " class="card-img-top">
+        <% } %>
+          <div class="card-body">
+            <p class="card-text"><i class="fa-solid fa-align-left"></i> <%= blog.content.slice(0,99) %>... <a href="/blog/<%= blog._id  %>">read more</a> </p>
                   <figure class="text-end mt-3">
                     <figcaption class="blockquote-footer">
                       <i class="fa-solid fa-signature"></i>Author: <cite title="Source Title"><%= blog.username || 'Unknown' %> </cite>
@@ -71,17 +78,14 @@
                       <i class="fa-solid fa-calendar"></i> Published on: <cite title="Source Title"><%= blog.postedAt %> </cite>
                     </figcaption>
                   </figure>
-                  <% /* %>
-                  <a href="/delete/<%= blog._id  %> " class="btn btn-danger">Delete</a>
-                  <a href="/edit/<%= blog._id  %> " class="btn btn-warning">Edit</a>
-                  <% */ %> 
-                  
-                </div>
-              </div>
-            </a>
-        
-        <% }) %> 
 
+          </div>
+        </div>
+      </div>
+    </a>
+        <% }); %> 
+      
+      </div>
       
   </div>
   <footer class="bg-dark text-center text-lg-start">

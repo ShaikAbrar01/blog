@@ -45,8 +45,29 @@
         <input type="text" name="title" class="form-control" placeholder="Enter title" required>
         <textarea name="content" cols="30" rows="10" class="mt-3 form-control" placeholder="Enter content here....  " required></textarea>
         <!-- <input type="submit" class="btn btn-md btn-danger mt-3" value="Publish">  -->
+        <br>
+        <input
+            type="hidden"
+            role="uploadcare-uploader"
+            data-public-key="bbc0a8d1e693ec2ff8f8"
+            data-tabs="file camera url gdrive gphotos"
+            data-effects="crop, rotate, mirror, blur, enhance, grayscale, sharp, flip, invert"
+        />
+        <br>
+        <input type="hidden" id="url" name="image" value="">
         <button type="submit" class="btn btn-md btn-success mt-3"><i class="fa-solid fa-upload"></i> Publish</button>
+        <a href="/home"><button type="button" class="btn btn-secondary mt-3">Cancel</button></a>
     </form>
 </div>
+<script>
+  const widget = uploadcare.Widget("[role=uploadcare-uploader]");
 
+// listen to the "upload completed" event
+widget.onUploadComplete(fileInfo => {
+// get a CDN URL from the file info
+// console.log(fileInfo.uuid);
+// console.log(fileInfo.cdnUrl);
+document.getElementById('url').value = fileInfo.cdnUrl
+});
+</script>
 <%- include('./partials/footer.ejs') %> 

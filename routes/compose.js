@@ -23,13 +23,13 @@ router.get('/compose', (req, res) => {
 })
 
 router.post('/compose', (req, res) => {
-    const {title, content} = req.body
+    const {title, content, image} = req.body
     
     // Check missing fields
     if(!title || !content) return res.send('Please enter all the required fields')
     const userId = req.session.userId
     const username = req.session.user_name
-    const newBlog = new Blog({title, content, userId, username})
+    const newBlog = new Blog({title, content, userId, username, image})
 
     // save the blog to the database
     newBlog.save()

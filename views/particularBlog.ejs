@@ -42,9 +42,13 @@
   
 
 <div class="container mt-3">
+    <% if(blog.image) { %> 
+      <img src="<%= blog.image %> " class="rounded img-thumbnail mb-2">
+    <% } %> 
     <h2 > <%= blog.title  %> </h2>
     <hr>
     <p class="mt-5"><%= blog.content  %> </p>
+    
     <figure>
       <figcaption class="blockquote-footer">
         Published on: <cite title="Source Title"><%= blog.postedAt %> </cite>

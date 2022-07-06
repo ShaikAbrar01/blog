@@ -42,15 +42,27 @@ router.get('/edit/:id',async (req, res) => {
 })
 router.post('/edit/:id', (req, res) => {
     const {id} = req.params
-    const {title, content} = req.body
-    Blog.updateOne({_id: id}, {title, content})
-    .then(() => {
-        console.log('Successfully updated the blog')
-        res.redirect('/blogs')
-    })
-    .catch((err) => {
-        console.log(err)
-    })
+    const {title, content, image} = req.body
+    if(image === '') {
+        Blog.updateOne({_id: id}, {title, content})
+        .then(() => {
+            console.log('Successfully updated the blog')
+            res.redirect('/blogs')
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    } else {
+        Blog.updateOne({_id: id}, {title, content, image})
+        .then(() => {
+            console.log('Successfully updated the blog')
+            res.redirect('/blogs')
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
+    
 })
 
 // router.post('/comment/:id', (req,res) => {
