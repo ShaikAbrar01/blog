@@ -67,6 +67,7 @@
           <img src="<%= blog.image %> " class="card-img-top">
         <% } %>
           <div class="card-body">
+            <h5 class="card-title"><i class="fa-brands fa-battle-net"></i> <%= blog.title %> </h5>
             <p class="card-text"><i class="fa-solid fa-align-left"></i> <%= blog.content.slice(0,99) %>... <a href="/blog/<%= blog._id  %>">read more</a> </p>
                   <figure class="text-end mt-3">
                     <figcaption class="blockquote-footer">
